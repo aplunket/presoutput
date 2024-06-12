@@ -21,3 +21,5 @@ ENV/
 *.njsproj
 *.sln
 *.sw*
+
+.DS_Store
