@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "presoutput"
-version = "0.1.0"
+version = "0.1.1"
 description = "Automatically convert your Quarto (qmd) documents into pdf or pptx files for sharing."
 authors = ["aplunket <applunket@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 python-dotenv = "^1.0.1"
 websockets = "^12.0"
 requests = "^2.32.3"
