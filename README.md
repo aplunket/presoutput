@@ -16,7 +16,9 @@ This package requires Google Chrome (or a chromium based browser like Edge) to b
 
 ## Usage
 
-You can use the `qmd_to_pdf` or `qmd_to_pptx` functions to convert your Quarto (.qmd) file to either pdf or pptx. 
+You can use the `presoutput <qmdfile.qmd>` cli function to generate either a pdf or pptx output. The function will default to PDF but can changed to PPTX with an optional `-t pptx`.
+
+You can use the `qmd_to_pdf` or `qmd_to_pptx` functions to convert your Quarto (.qmd) file to either pdf or pptx from with a python script. 
 
 Note that when converting to either format it follows the pattern below and the pptx file is made up of png copies of the original slides.
 
