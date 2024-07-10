@@ -19,7 +19,7 @@ if platform.system() == "Windows":
 
 
 def chrome_print(
-    input_file: str, output_file: str = None, browser: str = None, verbose: int = 0
+    input_file: str, output_file: str = None, browser: str = None, verbose: int = 0, page_load_time:int=1
 ):
     """
     Prints a local html file to PDF through chrome.
@@ -29,8 +29,9 @@ def chrome_print(
         input_filename (str): The name of the html file to be printed via chrome.
         output_filename (str, optional): The name of the output PDF file. Defaults to the same name as the input file.
         browser (str, optional): The path to chrome (or chrome based brower like chromium / edge). Defaults to the default location for the OS.
+        page_load_time (int, optional): Adds a wait time before attempting to print the file to allow the page to fully load. Defaults to 1 second. If output is a blank page increase this time.
         verbose (bool, optional): If True, prints detailed status messages. Default is False.
-
+        
     Returns:
         None
 

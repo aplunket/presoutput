@@ -12,7 +12,9 @@ def qmd_to_pdf(
     output_filename: str = None,
     delete_intermediate: bool = True,
     browser: str = None,
+    page_load_time: int = 1,
     verbose: int = 0,
+
 ):
     """
     Renders a Quarto (qmd) revealjs presentation and converts this to a pdf file.
@@ -24,8 +26,9 @@ def qmd_to_pdf(
         output_filename (str): Path to save the output PDF file.
         delete_intermediate (bool, optional): If True, delete the html outputs after pdf is generated. Default is True.
         browser (str, optional): The path to chrome (or chrome based brower like chromium / edge). Defaults to the default location for the OS.
+        page_load_time (int, optional): Adds a wait time before attempting to print the file to allow the page to fully load. Defaults to 1 second. If output is a blank page increase this time.
         verbose (bool, optional): If True, show progress messages. Default is True.
-
+        
     Retuns:
         None
 
@@ -49,6 +52,7 @@ def qmd_to_pdf(
         output_file=filename_pdf,
         browser=browser,
         verbose=verbose,
+        page_load_time=page_load_time
     )
 
     if delete_intermediate:
@@ -63,6 +67,7 @@ def qmd_to_pptx(
     dpi: int = 300,
     pptx_height: float = 7.5,
     pptx_width: float = 13.33,
+    page_load_time: int = 1,
     verbose: int = 0,
 ):
     """
@@ -78,8 +83,9 @@ def qmd_to_pptx(
         dpi (int, optional): DPI (dots per inch) for image conversion. Default is 300.
         pptx_height(float, optional): PPTX height in inches. Default is 7.5 (standard widescreen presentation size)
         pptx_width(float, optional): PPTX width in inches. Default is 13.33 (standard widescreen presentation size)
+        page_load_time (int, optional): Adds a wait time before attempting to print the file to allow the page to fully load. Defaults to 1 second. If output is a blank page increase this time.
         verbose (bool, optional): If True, show progress messages. Default is True.
-
+        
     Retuns:
         None
 
@@ -104,6 +110,7 @@ def qmd_to_pptx(
         output_file=filename_pdf,
         browser=browser,
         verbose=verbose,
+        page_load_time=page_load_time
     )
 
     pdf_to_pptx(

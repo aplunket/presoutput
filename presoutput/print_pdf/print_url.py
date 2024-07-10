@@ -27,6 +27,7 @@ def print_url(
     output_file,
     ws_timeout=120,
     command_timeout=30,
+    page_load_time=1
 ):
     try:
 
@@ -113,6 +114,8 @@ def print_url(
 
         # wait for page to load
         result = wait_event(ws, "Page.frameStoppedLoading", command_timeout)
+        
+        time.sleep(page_load_time)
 
         # 8 Page.printToPDF
         ws.send(
@@ -152,6 +155,29 @@ def wait_event(ws, event, timeout=120):
         except websocket.WebSocketTimeoutException:
             continue
         except Exception:
+            break
+    return matching_message
+
+def wait_event(ws, event, timeout=120, sleep_interval=0.5):
+    start_time = time.time()
+    messages = []
+    matching_message = None
+    while True:
+        now = time.time()
+        if now - start_time > timeout:
+            break
+        try:
+            message = ws.recv()
+            parsed_message = json.loads(message)
+            messages.append(parsed_message)
+            if "method" in parsed_message and parsed_message["method"] == event:
+                matching_message = parsed_message
+                break
+        except websocket.WebSocketTimeoutException:
+            time.sleep(sleep_interval)
+            continue
+        except Exception as e:
+            print(f"An error occurred: {e}")
             break
     return matching_message
 

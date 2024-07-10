@@ -64,6 +64,9 @@ def _cli():
     parser.add_argument(
         "-v", "--verbose", type=int, default=0, help="Verbose level (optional)"
     )
+    parser.add_argument(
+        "-pl", "--page_load", type=int, default=1, help="Page load time for the file in seconds. If you end up with a blank page increase this. (optional, defaults to 1)"
+    )
 
     args = parser.parse_args()
 
@@ -76,6 +79,7 @@ def _cli():
             pptx_height=args.pptx_height,
             pptx_width=args.pptx_width,
             browser=args.browser,
+            page_load_time=args.page_load,
             verbose=args.verbose,
         )
     else:
@@ -84,6 +88,7 @@ def _cli():
             output_filename=args.output,
             delete_intermediate=args.delete_intermediates,
             browser=args.browser,
+            page_load_time=args.page_load,
             verbose=args.verbose,
         )
 
